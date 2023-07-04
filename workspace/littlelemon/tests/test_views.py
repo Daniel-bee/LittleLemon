@@ -9,9 +9,9 @@ class MenuViewTest(TestCase):
         self.pizza = Menu.objects.create(title='Pizza', price=6.99, inventory=4)
         self.burger = Menu.objects.create(title='Burger', price=5.99, inventory=3)
         self.pasta = Menu.objects.create(title='Pasta', price=13.99, inventory=5)
-    def test_get_all(self):
+    def test_getall(self):
         client = APIClient()
-        response = client.get(reverse('restaurant:menu'))
+        response = client.get(reverse('resturant:menu'))
         menu = Menu.objects.all()
         serializer = MenuSerializer(menu, many=True)
         self.assertEqual(response.data, serializer.data)
